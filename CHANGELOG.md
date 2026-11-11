@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fixed
+- `fix --mode all` and the Python `fix()` function reject zero and negative limits with a clean error instead of building invalid SQL or silently replacing zero. Safe mode still ignores the limit (#118).
+
 ### Added
 - Refuse inspect limits outside 1-200 and sensitive value scans outside 0-1000 instead of silently clamping them (#97). A named table still ignores the listing limit.
 - `gulliver rules --format markdown|json` prints a generated rule table (markdown) or the same JSON as `--json`; the README Scale lint rules table is generated from it (#18).
