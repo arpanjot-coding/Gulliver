@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fixed
+- `check` with no quality-check options records row-count history but explicitly says no checks were requested (`checks_requested: 0`), rather than claiming all checks passed (#130).
+
 ### Added
 - Refuse inspect limits outside 1-200 and sensitive value scans outside 0-1000 instead of silently clamping them (#97). A named table still ignores the listing limit.
 - `gulliver rules --format markdown|json` prints a generated rule table (markdown) or the same JSON as `--json`; the README Scale lint rules table is generated from it (#18).
