@@ -2,9 +2,6 @@
 
 ## Unreleased
 
-### Fixed
-- `check` with no quality-check options records row-count history but explicitly says no checks were requested (`checks_requested: 0`), rather than claiming all checks passed (#130).
-
 ### Added
 - Refuse inspect limits outside 1-200 and sensitive value scans outside 0-1000 instead of silently clamping them (#97). A named table still ignores the listing limit.
 - `gulliver rules --format markdown|json` prints a generated rule table (markdown) or the same JSON as `--json`; the README Scale lint rules table is generated from it (#18).
@@ -53,6 +50,7 @@
 - New test `tests/test_tool_annotations.py`: read-only tools may not describe writes.
 - `gulliver_check` is no longer annotated read-only either: it stores the row count locally for the next `max_change_pct` comparison.
 - Receipt ids now carry 64 random bits instead of 32. With 32 bits, two ids made in the same second collided about 1 in 300 times over 5000 ids (seen as a flaky CI test on macOS). The prompt-injection guard recognizes the longer ids.
+- `check` with no quality-check options records row-count history but explicitly says no checks were requested (`checks_requested: 0`), rather than claiming all checks passed (#130).
 
 ### Changed
 - Lint rule GV013 `leading-wildcard-like` also flags `LIKE` / `ILIKE` patterns that start with the `_` wildcard; an escaped `\_` stays unflagged (#78, #82).
